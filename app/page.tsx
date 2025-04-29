@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
-import { button as buttonStyles} from "@heroui/theme";
+import { button as buttonStyles } from "@heroui/theme";
 import { title } from "@/components/primitives";
 import { motion } from "framer-motion";
-import {Card, CardBody} from "@heroui/react";
+import { Card, CardBody } from "@heroui/react";
+
 interface FlashcardProps {
   question: string;
   answer: string;
@@ -52,10 +53,7 @@ const Input = ({ onSend }: { onSend: (text: string) => void }) => {
           radius: "full",
           variant: "shadow",
         })}
-        onClick={() => {
-          console.log(value);
-          onSend(value);
-        }}
+        onClick={() => onSend(value)}
       >
         =&gt;
       </button>
@@ -65,11 +63,10 @@ const Input = ({ onSend }: { onSend: (text: string) => void }) => {
 
 export default function Home() {
   const [cards, setCards] = useState<{ question: string; answer: string }[]>([]);
-  const [partial, setPartial] = useState("");
 
   const sendTopic = async (topic: string) => {
     try {
-      const response = await fetch("http://localhost:8000/negotiations/generate-cards", {
+      const response = await fetch("/api/negotiations/generate-cards", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
