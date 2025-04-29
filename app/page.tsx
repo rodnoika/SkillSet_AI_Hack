@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import { button as buttonStyles} from "@heroui/theme";
+import { button as buttonStyles } from "@heroui/theme";
 import { title } from "@/components/primitives";
 import { motion } from "framer-motion";
-import {Card, CardBody} from "@heroui/react";
+import { Card, CardBody } from "@heroui/react";
 interface FlashcardProps {
   question: string;
   answer: string;
@@ -104,6 +104,7 @@ export default function Home() {
           <Flashcard key={index} question={card.question} answer={card.answer} />
         ))}
       </div>
-    </section>
+    </section> 
   );
 }
+// pipikaka
