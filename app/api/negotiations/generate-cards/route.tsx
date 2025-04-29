@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
         maxOutputTokens: 2048,
       },
       systemInstruction:
-        "Ты создаешь флеш-карточки (вопрос-ответ) по введённой теме. Ответ должен быть списком из 5 карточек в виде JSON. Формат: [{\"question\": \"...\", \"answer\": \"...\"}, ...]",
+        'Ты создаешь флеш-карточки (вопрос-ответ) по введённой теме. Ответ должен быть списком из 5 карточек в виде JSON. Формат: [{"question": "...", "answer": "..."}, ...]',
     });
 
     const result = await model.generateContent(topic);
@@ -25,6 +25,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ idx: 0, cards });
   } catch (e) {
-    return NextResponse.json({ error: "Failed to generate cards" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to generate cards" },
+      { status: 500 },
+    );
   }
 }
