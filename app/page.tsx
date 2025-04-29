@@ -101,6 +101,6 @@ export default function Home() {
           <Flashcard key={index} question={card.question} answer={card.answer} />
         ))}
       </div>
-    </section>
+    </section> 
   );
 }
